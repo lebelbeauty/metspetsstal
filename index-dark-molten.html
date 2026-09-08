@@ -253,24 +253,69 @@
     <!-- ========== HERO + 3 DIRECTIONS ========== -->
     <section id="top" class="hero-bg min-h-screen flex items-center relative overflow-hidden pt-28">
         <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full" style="max-width:1200px;">
-            <div class="text-center mb-12 fade-up in">
-                <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/10 mb-6" style="color:#fb923c;">
-                    <span class="dot-blink"></span>
-                    Прямые поставки от производителей, от 100 кг
+
+            <!-- ===== BLOCK 1: ЗАГОЛОВОК + ФОРМА ЗАГРУЗКИ ===== -->
+            <div class="grid lg:grid-cols-2 gap-10 xl:gap-16 items-center fade-up in">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/10 mb-6" style="color:#fb923c;">
+                        <span class="dot-blink"></span>
+                        Прямые поставки от производителей, от 100 кг
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color:#f1f5f9;">
+                        Металопрокат<br/>
+                        <span style="color:#ff6b35;" class="text-glow">под ваш проект</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl mb-8 leading-relaxed" style="color:rgba(255,255,255,0.8);">
+                        Конструкционные, низколегированные, сталь для&nbsp;мостостроения, жаропрочная сталь
+                    </p>
+                    <a href="#directions" class="btn-cta text-white px-8 py-4 rounded-xl font-semibold text-base no-underline">
+                        Смотреть направления
+                        <i class="fas fa-arrow-down" style="font-size:0.75rem;"></i>
+                    </a>
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color:#f1f5f9;">
-                    3 основных направления,
-                    <br/><span style="color:#ff6b35;" class="text-glow">которые мы поставляем</span>
-                </h1>
-                <p class="text-lg sm:text-xl mb-6 leading-relaxed max-w-2xl mx-auto" style="color:rgba(255,255,255,0.8);">
-                    Нажмите на направление — снизу раскроются марки, размеры и ГОСТы.
-                    Прикрепите заказ-наряд или спецификацию — ответим с ценой и наличием.
-                </p>
+
+                <div>
+                    <div class="upload-card">
+                        <div class="upload-zone" id="dropZone">
+                            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div class="upload-title">Загрузите ваш заказ-наряд</div>
+                            <div class="upload-subtitle">или спецификацию на подбор позиций</div>
+                            <div class="upload-hint">Перетащите файл сюда или <span class="upload-link" onclick="document.getElementById('fileInput').click()">выберите</span></div>
+                            <input type="file" id="fileInput" multiple style="display:none" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.zip">
+                            <div class="upload-formats">PDF, DOC, XLS, JPG, PNG, ZIP — до 20 МБ</div>
+                        </div>
+
+                        <div class="upload-fields">
+                            <div class="field-row">
+                                <div class="field-group flex-1">
+                                    <label class="field-label">Телефон *</label>
+                                    <input type="tel" required placeholder="+7 (999) 123-45-67" class="upload-input">
+                                </div>
+                                <div class="field-group flex-1">
+                                    <label class="field-label">Email</label>
+                                    <input type="email" placeholder="ivanov@example.com" class="upload-input">
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <label class="field-label">Контактное лицо / Организация</label>
+                                <input type="text" placeholder="Иван Иванов, ООО «СтальПроект»" class="upload-input">
+                            </div>
+                            <button type="submit" class="btn-cta text-white w-full py-3.5 rounded-xl font-semibold text-sm no-underline justify-center" onclick="handleUploadForm(event)">
+                                <i class="fas fa-paper-plane"></i>
+                                Отправить запрос
+                            </button>
+                            <div class="upload-msg">
+                                <i class="fas fa-bolt" style="color:#ff6b35;font-size:0.65rem;"></i>
+                                Присылайте ваш запрос — менеджер ответит в течение 5 минут,
+                                даст информацию и цены по наличию и срокам доставки
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid lg:grid-cols-5 gap-8 xl:gap-12 items-start fade-up in">
-                <div class="lg:col-span-3">
-
+            <!-- ===== BLOCK 2: 3 НАПРАВЛЕНИЯ ===== -->
+            <div id="directions" class="mt-16 fade-up in" style="scroll-margin-top:110px;">
             <!-- ===== 3 DIRECTION CARDS ===== -->
             <div class="grid md:grid-cols-3 gap-4 lg:gap-5" id="dirGrid">
                 <!-- 1. ЛИСТ -->
@@ -447,48 +492,6 @@
                     </div>
                 </div>
             </div>
-
-                </div>
-
-                <!-- ===== RIGHT: UPLOAD FORM (как в v1) ===== -->
-                <div class="lg:col-span-2 fade-up in">
-                    <div class="upload-card" style="position:sticky; top:110px;">
-                        <div class="upload-zone" id="dropZone">
-                            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                            <div class="upload-title">Загрузите ваш заказ-наряд</div>
-                            <div class="upload-subtitle">или спецификацию на подбор позиций</div>
-                            <div class="upload-hint">Перетащите файл сюда или <span class="upload-link" onclick="document.getElementById('fileInput').click()">выберите</span></div>
-                            <input type="file" id="fileInput" multiple style="display:none" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.zip">
-                            <div class="upload-formats">PDF, DOC, XLS, JPG, PNG, ZIP — до 20 МБ</div>
-                        </div>
-
-                        <div class="upload-fields">
-                            <div class="field-row">
-                                <div class="field-group flex-1">
-                                    <label class="field-label">Телефон *</label>
-                                    <input type="tel" required placeholder="+7 (999) 123-45-67" class="upload-input">
-                                </div>
-                                <div class="field-group flex-1">
-                                    <label class="field-label">Email</label>
-                                    <input type="email" placeholder="ivanov@example.com" class="upload-input">
-                                </div>
-                            </div>
-                            <div class="field-group">
-                                <label class="field-label">Контактное лицо / Организация</label>
-                                <input type="text" placeholder="Иван Иванов, ООО «СтальПроект»" class="upload-input">
-                            </div>
-                            <button type="submit" class="btn-cta text-white w-full py-3.5 rounded-xl font-semibold text-sm no-underline justify-center" onclick="handleUploadForm(event)">
-                                <i class="fas fa-paper-plane"></i>
-                                Отправить запрос
-                            </button>
-                            <div class="upload-msg">
-                                <i class="fas fa-bolt" style="color:#ff6b35;font-size:0.65rem;"></i>
-                                Присылайте ваш запрос — менеджер ответит в течение 5 минут,
-                                даст информацию и цены по наличию и срокам доставки
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
