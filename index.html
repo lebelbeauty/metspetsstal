@@ -160,6 +160,37 @@
         .form-select option { background: #0f1a2e; color: #e2e8f0; }
         label.blk { display: block; font-size: 0.9rem; font-weight: 500; color: #94a3b8; margin-bottom: 0.5rem; }
 
+        /* ===== UPLOAD CARD (как в v1) ===== */
+        .upload-card { background: rgba(6,11,21,0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 1.5rem; }
+        .upload-zone { border: 2px dashed rgba(255,107,53,0.25); border-radius: 16px; padding: 1.75rem 1rem; text-align: center; cursor: pointer; transition: all 0.3s; margin-bottom: 1.25rem; background: rgba(255,107,53,0.03); }
+        .upload-zone:hover, .upload-zone.dragover { border-color: #ff6b35; background: rgba(255,107,53,0.06); }
+        .upload-zone .upload-icon { font-size: 2rem; color: rgba(255,107,53,0.3); margin-bottom: 0.6rem; transition: all 0.3s; }
+        .upload-zone:hover .upload-icon { color: rgba(255,107,53,0.5); transform: translateY(-2px); }
+        .upload-title { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 0.15rem; }
+        .upload-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+        .upload-hint { font-size: 0.72rem; color: rgba(255,255,255,0.65); margin-bottom: 0.4rem; }
+        .upload-link { color: #ff6b35; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+        .upload-link:hover { color: #fb923c; }
+        .upload-formats { font-size: 0.6rem; color: rgba(255,255,255,0.25); }
+        .upload-fields { display: flex; flex-direction: column; gap: 0.75rem; }
+        .field-row { display: flex; gap: 0.75rem; }
+        .field-group { display: flex; flex-direction: column; gap: 0.3rem; }
+        .field-label { font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.04em; }
+        .upload-input { width: 100%; padding: 0.7rem 1rem; border: 1.5px solid rgba(255,255,255,0.08); border-radius: 10px; font-family: inherit; font-size: 0.85rem; transition: all 0.3s; background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.9); }
+        .upload-input:focus { outline: none; border-color: #ff6b35; box-shadow: 0 0 0 3px rgba(255,107,53,0.08); background: rgba(255,255,255,0.06); }
+        .upload-input::placeholder { color: rgba(255,255,255,0.25); }
+        .upload-msg { font-size: 0.68rem; color: rgba(255,255,255,0.55); line-height: 1.5; text-align: center; padding: 0 0.5rem; }
+        .contacts-upload-card { background: rgba(255,255,255,0.02); border: 1.5px dashed rgba(255,107,53,0.2); border-radius: 16px; padding: 1.25rem 1.5rem; transition: all 0.3s; backdrop-filter: blur(4px); }
+        .contacts-upload-card:hover { border-color: rgba(255,107,53,0.4); background: rgba(255,107,53,0.03); }
+        .contacts-file-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; color: #ff6b35; background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.2); cursor: pointer; transition: all 0.3s; }
+        .contacts-file-btn:hover { background: rgba(255,107,53,0.14); border-color: rgba(255,107,53,0.35); }
+        .contacts-upload-card-dragover { border-color: rgba(255,107,53,0.6) !important; background: rgba(255,107,53,0.06) !important; }
+        @media (max-width: 768px) {
+            .field-row { flex-direction: column; }
+            .contacts-upload-card .flex { flex-wrap: wrap; justify-content: center; }
+            .contacts-file-btn { width: 100%; justify-content: center; }
+        }
+
         .contacts-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,17,23,0.92) 0%, rgba(13,17,23,0.4) 55%, rgba(13,17,23,0.15) 100%), url('Flux_Schnell_a_surreal_and_vibrant_cinematic_photo_of_Sheet_me_0.jpg') center center / cover no-repeat; z-index: 0; }
         .contact-chip { border-radius: 6px; padding: 0.2rem 0.5rem; font-size: 0.8rem; display: inline-flex; }
 
@@ -222,7 +253,7 @@
     <!-- ========== HERO + 3 DIRECTIONS ========== -->
     <section id="top" class="hero-bg min-h-screen flex items-center relative overflow-hidden pt-28">
         <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full" style="max-width:1200px;">
-            <div class="text-center mb-10 fade-up in">
+            <div class="text-center mb-12 fade-up in">
                 <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/10 mb-6" style="color:#fb923c;">
                     <span class="dot-blink"></span>
                     Прямые поставки от производителей, от 100 кг
@@ -231,14 +262,17 @@
                     3 основных направления,
                     <br/><span style="color:#ff6b35;" class="text-glow">которые мы поставляем</span>
                 </h1>
-                <p class="text-lg sm:text-xl mb-10 leading-relaxed max-w-2xl mx-auto" style="color:rgba(255,255,255,0.8);">
+                <p class="text-lg sm:text-xl mb-6 leading-relaxed max-w-2xl mx-auto" style="color:rgba(255,255,255,0.8);">
                     Нажмите на направление — снизу раскроются марки, размеры и ГОСТы.
-                    Оставьте заявку, и мы отправим актуальную цену на ваш сортамент.
+                    Прикрепите заказ-наряд или спецификацию — ответим с ценой и наличием.
                 </p>
             </div>
 
+            <div class="grid lg:grid-cols-5 gap-8 xl:gap-12 items-start fade-up in">
+                <div class="lg:col-span-3">
+
             <!-- ===== 3 DIRECTION CARDS ===== -->
-            <div class="grid md:grid-cols-3 gap-5 lg:gap-6 fade-up in" id="dirGrid">
+            <div class="grid md:grid-cols-3 gap-4 lg:gap-5" id="dirGrid">
                 <!-- 1. ЛИСТ -->
                 <div class="dir-card" id="card-list" onclick="togglePanel('list')">
                     <div class="dir-icon" style="background:rgba(255,107,53,0.12);color:#ff6b35;"><i class="fas fa-layer-group"></i></div>
@@ -413,6 +447,49 @@
                     </div>
                 </div>
             </div>
+
+                </div>
+
+                <!-- ===== RIGHT: UPLOAD FORM (как в v1) ===== -->
+                <div class="lg:col-span-2 fade-up in">
+                    <div class="upload-card" style="position:sticky; top:110px;">
+                        <div class="upload-zone" id="dropZone">
+                            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div class="upload-title">Загрузите ваш заказ-наряд</div>
+                            <div class="upload-subtitle">или спецификацию на подбор позиций</div>
+                            <div class="upload-hint">Перетащите файл сюда или <span class="upload-link" onclick="document.getElementById('fileInput').click()">выберите</span></div>
+                            <input type="file" id="fileInput" multiple style="display:none" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.zip">
+                            <div class="upload-formats">PDF, DOC, XLS, JPG, PNG, ZIP — до 20 МБ</div>
+                        </div>
+
+                        <div class="upload-fields">
+                            <div class="field-row">
+                                <div class="field-group flex-1">
+                                    <label class="field-label">Телефон *</label>
+                                    <input type="tel" required placeholder="+7 (999) 123-45-67" class="upload-input">
+                                </div>
+                                <div class="field-group flex-1">
+                                    <label class="field-label">Email</label>
+                                    <input type="email" placeholder="ivanov@example.com" class="upload-input">
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <label class="field-label">Контактное лицо / Организация</label>
+                                <input type="text" placeholder="Иван Иванов, ООО «СтальПроект»" class="upload-input">
+                            </div>
+                            <button type="submit" class="btn-cta text-white w-full py-3.5 rounded-xl font-semibold text-sm no-underline justify-center" onclick="handleUploadForm(event)">
+                                <i class="fas fa-paper-plane"></i>
+                                Отправить запрос
+                            </button>
+                            <div class="upload-msg">
+                                <i class="fas fa-bolt" style="color:#ff6b35;font-size:0.65rem;"></i>
+                                Присылайте ваш запрос — менеджер ответит в течение 5 минут,
+                                даст информацию и цены по наличию и срокам доставки
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -510,17 +587,6 @@
                 <!-- FORM -->
                 <div class="lg:col-span-3 glass-card p-8 sm:p-10">
                     <form id="contactForm" onsubmit="handleForm(event)">
-                        <div class="mb-5">
-                            <label class="blk">Что вам нужно? *</label>
-                            <select id="dirSelect" class="form-input form-select" required>
-                                <option value="" selected disabled>Выберите направление…</option>
-                                <option value="Листовой металлопрокат">Листовой металлопрокат</option>
-                                <option value="Труба профильная">Труба профильная</option>
-                                <option value="Медная шина ШМТ">Медная шина ШМТ</option>
-                                <option value="Редкие/легированные стали">Редкие и легированные стали</option>
-                                <option value="Другое">Другое</option>
-                            </select>
-                        </div>
                         <div class="grid sm:grid-cols-2 gap-5 mb-5">
                             <div>
                                 <label class="blk">Ваше имя *</label>
@@ -536,9 +602,29 @@
                             <input type="email" placeholder="ivanov@example.com" class="form-input">
                         </div>
                         <div class="mb-5">
-                            <label class="blk">Марка, размеры, объём *</label>
-                            <textarea rows="4" required placeholder="Например: лист 09Г2С t=12 мм — 3 т; труба профильная 40×40 стенка 3 — 200 м; шина ШМТ 50×5 — 150 кг…" class="form-input resize-none"></textarea>
+                            <label class="blk">Что нужно? *</label>
+                            <textarea id="contactWhat" rows="4" required placeholder="Укажите марку стали, размеры, объём партии..." class="form-input resize-none"></textarea>
                         </div>
+
+                        <div class="contacts-upload-card mb-5" id="contactsDropZone">
+                            <div class="flex items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(255,107,53,0.1);color:#ff6b35;font-size:1.2rem;">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold" style="color:#f1f5f9;" id="contactsUploadTitle">Прикрепите заказ-наряд (необязательно)</div>
+                                    <div class="text-xs mt-0.5" style="color:#64748b;" id="contactsUploadHint">PDF, DOC, XLS — перетащите или нажмите</div>
+                                </div>
+                                <label class="contacts-file-btn" style="font-size:0.75rem;padding:0.45rem 1rem;">
+                                    <i class="fas fa-paperclip"></i>
+                                    Выбрать
+                                    <input type="file" multiple id="contactsFileInput" style="display:none" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.zip">
+                                </label>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn-cta text-white w-full py-4 rounded-xl font-semibold text-base no-underline justify-center" style="box-shadow:0 4px 20px rgba(255,107,53,0.25);">
                             <i class="fas fa-paper-plane"></i>
                             Отправить заявку
@@ -655,8 +741,102 @@
         }
 
         function order(dir) {
-            const sel = document.getElementById('dirSelect');
-            sel.value = dir;
+            const ta = document.getElementById('contactWhat');
+            if (ta) {
+                const prefix = 'Интересует: ' + dir + '. ';
+                ta.value = ta.value.trim() ? prefix + ta.value : prefix;
+            }
+            const c = document.getElementById('contacts');
+            if (c) c.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // V1-style handler for the hero upload form
+        function handleUploadForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button') || e.target;
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Запрос отправлен!';
+                btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        }
+
+        // V1-style handler for the contacts form
+        function handleForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Заявка отправлена!';
+                btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+                e.target.reset();
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        }
+
+        // Hero drag & drop
+        const dropZone = document.getElementById('dropZone');
+        if (dropZone) {
+            ['dragenter', 'dragover'].forEach(evt => {
+                dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+            });
+            ['dragleave', 'drop'].forEach(evt => {
+                dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.remove('dragover'); });
+            });
+            dropZone.addEventListener('drop', e => {
+                e.preventDefault();
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    dropZone.querySelector('.upload-title').textContent = 'Файл загружен: ' + files[0].name;
+                    dropZone.querySelector('.upload-hint').innerHTML = 'Ещё файл? <span class="upload-link" onclick="document.getElementById(\'fileInput\').click()">выберите</span>';
+                    document.getElementById('fileInput').files = files;
+                }
+            });
+            document.getElementById('fileInput').addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    dropZone.querySelector('.upload-title').textContent = 'Файл загружен: ' + this.files[0].name;
+                    dropZone.querySelector('.upload-hint').innerHTML = 'Ещё файл? <span class="upload-link" onclick="document.getElementById(\'fileInput\').click()">выберите</span>';
+                }
+            });
+        }
+
+        // Contacts drag & drop
+        const cDrop = document.getElementById('contactsDropZone');
+        if (cDrop) {
+            ['dragenter', 'dragover'].forEach(evt => {
+                cDrop.addEventListener(evt, e => { e.preventDefault(); cDrop.classList.add('contacts-upload-card-dragover'); });
+            });
+            ['dragleave', 'drop'].forEach(evt => {
+                cDrop.addEventListener(evt, e => { e.preventDefault(); cDrop.classList.remove('contacts-upload-card-dragover'); });
+            });
+            cDrop.addEventListener('drop', e => {
+                e.preventDefault();
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    document.getElementById('contactsUploadTitle').textContent = 'Файл загружен: ' + files[0].name;
+                    document.getElementById('contactsUploadHint').textContent = 'Можете добавить ещё — просто перетащите';
+                    document.getElementById('contactsFileInput').files = files;
+                }
+            });
+            document.getElementById('contactsFileInput').addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    document.getElementById('contactsUploadTitle').textContent = 'Файл загружен: ' + this.files[0].name;
+                    document.getElementById('contactsUploadHint').textContent = 'Можете добавить ещё — просто перетащите';
+                }
+            });
         }
     </script>
 </body>
