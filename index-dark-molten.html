@@ -115,6 +115,7 @@
             background: linear-gradient(170deg, rgba(255,107,53,0.05), rgba(6,11,21,0.55));
             padding: 2.25rem;
             margin-top: 1.5rem;
+            scroll-margin-top: 130px;
         }
         .grade-chip {
             display: inline-flex; align-items: center; gap: 0.4rem;
@@ -378,7 +379,7 @@
             </div>
 
             <!-- ===== EXPANDABLE PANEL ===== -->
-            <div class="dir-panel-wrap" id="panelWrap">
+            <div class="dir-panel-wrap" id="panelWrap" style="scroll-margin-top:110px;">
                 <div class="dir-panel-inner">
                     <!-- LAYER PANEL: LИСТ -->
                     <div id="panel-list" class="dir-panel" style="display:none;">
@@ -766,6 +767,12 @@
                 wrap.classList.remove('open');
                 void wrap.offsetWidth;
                 wrap.classList.add('open');
+
+                // Scroll the page to the revealed panel (keep fixed top bar/nav in view)
+                const panel = document.getElementById('panel-' + name);
+                setTimeout(() => {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 350);
             }
 
             panels.forEach(p => {
